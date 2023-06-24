@@ -53,44 +53,6 @@ export default function Create() {
     };
 
     const handleSaveAsDraftClick = async (event) => {
-  event.preventDefault();
-  fetch("http://localhost:4000/api/add-article", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      author_id: user,
-      content: articleContent,
-      title: title,
-      level: level.current.value,
-      isDraft: true,
-      categories: categories,
-      votes: 0, // Set the votes property to 0
-    }),
-  })
-    .then((response) => {
-      if (response.status === 200) {
-        console.log("Article saved as draft");
-        return response.json();
-      } else {
-        console.log("Error saving article as draft");
-        throw new Error("Error saving article as draft");
-      }
-    })
-    .then((data) => {
-      console.log(data);
-      setPublishedArticles((prevState) => [...prevState, data]);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-
-  setPopupOpen(false);
-  setArticleContent('');
-};
-
-    const handlePublishClick = async (event) => {
         event.preventDefault();
         fetch("http://localhost:4000/api/add-article", {
           method: "POST",
@@ -102,32 +64,72 @@ export default function Create() {
             content: articleContent,
             title: title,
             level: level.current.value,
-            isDraft: false,
+            isDraft: true,
             categories: categories,
+            votes: 0,
           }),
         })
           .then((response) => {
             if (response.status === 200) {
-              console.log("Article saved");
-              return response.json(); // Parse the response JSON
+              console.log("Article saved as draft");
+              return response.json();
             } else {
-              console.log("Error saving article");
-              throw new Error("Error saving article"); // Throw an error for error handling
+              console.log("Error saving article as draft");
+              throw new Error("Error saving article as draft");
             }
           })
           .then((data) => {
             console.log(data);
-            // Update the publishedArticles state with the new article
             setPublishedArticles((prevState) => [...prevState, data]);
+            setPopupOpen(false);
+            setArticleContent('');
+    
+            // Reload the page to display the updated "Articles in Draft"
+            window.location.reload();
           })
           .catch((error) => {
             console.log(error);
           });
-      
+      };
+
+const handlePublishClick = async (event) => {
+    event.preventDefault();
+    fetch("http://localhost:4000/api/add-article", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        author_id: user,
+        content: articleContent,
+        title: title,
+        level: level.current.value,
+        isDraft: false,
+        categories: categories,
+      }),
+    })
+      .then((response) => {
+        if (response.status === 200) {
+          console.log("Article saved");
+          return response.json();
+        } else {
+          console.log("Error saving article");
+          throw new Error("Error saving article");
+        }
+      })
+      .then((data) => {
+        console.log(data);
+        setPublishedArticles((prevState) => [...prevState, data]);
         setPopupOpen(false);
         setArticleContent('');
-      };
-      
+
+        // Reload the page to display the updated "Published Articles"
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
     const addCategory = (e) => {
         e.preventDefault();
