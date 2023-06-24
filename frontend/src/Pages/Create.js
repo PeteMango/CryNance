@@ -44,7 +44,7 @@ export default function Create() {
 
             <button onClick={handleNewArticleClick}>New Article</button>
 
-            {isPopupOpen && (
+            {isPopupOpen && (       
                 <div>
                     <h2>New Article</h2>
                     <textarea
