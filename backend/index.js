@@ -51,7 +51,8 @@ async function getRecord () {
 
 async function listRecordsWithFilter () {
   // where(name, op, value)
-  const records = await articleCollectionReference.where("level", "==", "level").get();
+  // const records = await articleCollectionReference.where("level", "==", "level").get();
+  const records = await articleCollectionReference.where("vote", ">=", 50).get();
   // Array of records is available under the data property
   const { data, cursor } = records;
   const filtered = data.map((record) => {
@@ -72,29 +73,32 @@ app.post("/api/add-article", async (req, res) => {
   // id author_id created_at content title level vote
   const {author_id, content, title, level, isDraft, categories} = req.body;
   const id = uuidv4();
+  console.log(req.body);
+  console.log(Date.now());
+  console.log(String(Date.now()));
   try {
     const recordData = await articleCollectionReference.create([
       id,
       author_id,
-      Date.now(),
+      String(Date.now()),
       content,
       title,
       level,
-      (isDraft ? 0 : 1),
+      (isDraft ? 1 : 0),
       categories
     ]);
     res.status(200).json(recordData);
     // {
-    //   author_id: 'im the author',
-    //   content: 'this is an important article',
-    //   created_at: 'september 1',
-    //   id: 'theid3',
-    //   level: 'free',
-    //   title: 'important article',
-    //   vote: 50
-    // }
-  }
-  catch(error) {
+      //   author_id: 'im the author',
+      //   content: 'this is an important article',
+      //   created_at: 'september 1',
+      //   id: 'theid3',
+      //   level: 'free',
+      //   title: 'important article',
+      //   vote: 50
+      // }
+    }
+    catch(error) {
       handleErrorResponse(res, error, 500, "Error adding article");
   }
 })
@@ -116,8 +120,9 @@ app.get("/api/get-articles-by-authorID/:authorID", async(req, res) => {
   }
 })
 
-app.get("/api/get-articles-by-vote-min/:vote", async(req, res) => {
-  const vote = req.params.vote;
+app.get("/api/get-articles-by-vote-min/:vote", async (req, res) => {
+  let vote = req.params.vote;
+  vote = Number(vote);
   try {
     const records = await articleCollectionReference.where("vote", ">=", vote).get();
     // Array of records is available under the data property
@@ -169,7 +174,7 @@ app.get("/api/get-all-articles", async(req, res) => {
 async function upvote () {
   // .create(functionName, args) args array is defined by the updateName fn in collection schema
   const recordData = await articleCollectionReference
-    .record("id5")
+    .record("78c72734-f778-4dde-805c-c0b0b6003861")
     .call("Upvote");
   console.log(recordData.data);
 }
