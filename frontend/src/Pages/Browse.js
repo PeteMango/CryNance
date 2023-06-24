@@ -1,5 +1,6 @@
-import './Pages.css'
-import Card from '../Components/article-card';
+import './Pages.css';
+import ArticleCard from '../Components/article-card';
+import DashboardCard from '../Components/dashboard-card'
 
 export default function Browse() {
     return (
@@ -23,16 +24,16 @@ export default function Browse() {
                         </div>
                     </div>
                     <select class="select select-bordered join-item">
-                        <option disabled selected>Category</option>
-                        <option>Sci-fi</option>
-                        <option>Drama</option>
-                        <option>Action</option>
+                        <option disabled selected>Sort By</option>
+                        <option>Recent</option>
+                        <option>Rating</option>
                     </select>
                     <div class="indicator">
                         <button class="btn join-item">Search</button>
                     </div>
                 </div>
-                <Card></Card>
+                <ArticleCard></ArticleCard>
+                <DashboardCard></DashboardCard>
             </div>
             {/* <Card></Card> */}
         </>
