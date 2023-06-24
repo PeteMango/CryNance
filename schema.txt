@@ -1,0 +1,25 @@
+@public
+collection Article {
+  id: string;
+  author_id: string;
+  created_at: string;
+  content: string;
+  title: string;
+  level: string;
+  vote: number;
+  constructor (id: string, author_id:string, created_at:string, content:string, title:string, level:string) {
+    this.id = id;
+    this.author_id = author_id;
+    this.created_at = created_at;
+    this.content = content;
+    this.title = title;
+    this.level = level;
+    this.vote = 50;
+  }
+  function Upvote () {
+    this.vote = this.vote + 1;
+  }
+  function Downvote () {
+    this.vote = this.vote - 1;
+  }
+}
