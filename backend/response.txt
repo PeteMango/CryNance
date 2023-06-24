@@ -1,0 +1,120 @@
+[
+  CollectionRecordResponse {
+    call: [Function (anonymous)],
+    get: [Function (anonymous)],
+    reference: [Function (anonymous)],
+    key: [Function (anonymous)],
+    onSnapshot: [Function (anonymous)],
+    request: [Function (anonymous)],
+    id: 'pk/0x6aec08b85c53bc7ac7256f4a479a352f5348048f3214d95592e0f9011f359649043af2b68cdd4bd96104d9d6e877b7336906fc8d547038b49a6d88bc3dbc56e1/CRyNANCE/Article',
+    collection: Collection {
+      querySubs: {},
+      recordSubs: {},
+      load: [Function (anonymous)],
+      getMeta: [Function (anonymous)],
+      getAST: [Function (anonymous)],
+      validate: [Function (anonymous)],
+      isReadPubliclyAccessible: [Function (anonymous)],
+      isCallPubliclyAccessible: [Function (anonymous)],
+      isCollectionPubliclyAccessible: [Function (anonymous)],
+      create: [Function (anonymous)],
+      get: [Function (anonymous)],
+      record: [Function (anonymous)],
+      doc: [Function (anonymous)],
+      where: [Function (anonymous)],
+      sort: [Function (anonymous)],
+      limit: [Function (anonymous)],
+      onSnapshot: [Function (anonymous)],
+      after: [Function (anonymous)],
+      before: [Function (anonymous)],
+      key: [Function (anonymous)],
+      onQuerySnapshotRegister: [Function (anonymous)],
+      onRecordSnapshotRegister: [Function (anonymous)],
+      id: 'pk/0x6aec08b85c53bc7ac7256f4a479a352f5348048f3214d95592e0f9011f359649043af2b68cdd4bd96104d9d6e877b7336906fc8d547038b49a6d88bc3dbc56e1/CRyNANCE/Article',
+      client: [Client],
+      meta: [Object],
+      astCache: [Object]
+    },
+    client: Client {
+      request: [Function (anonymous)],
+      sender: [Function],
+      signer: undefined,
+      config: [Object],
+      signatureCache: {}
+    },
+    onSnapshotRegister: [Function (anonymous)],
+    exists: [Function (anonymous)],
+    toJSON: [Function (anonymous)],
+    data: {
+      author_id: 'author_id',
+      content: 'content',
+      created_at: 'created_at',
+      id: 'id',
+      level: 'level',
+      title: 'title',
+      vote: 50
+    },
+    block: {
+      hash: '0x0000000000000000000000000000000000000000000000000000000000000000'
+    }
+  },
+  CollectionRecordResponse {
+    call: [Function (anonymous)],
+    get: [Function (anonymous)],
+    reference: [Function (anonymous)],
+    key: [Function (anonymous)],
+    onSnapshot: [Function (anonymous)],
+    request: [Function (anonymous)],
+    id: 'pk/0x6aec08b85c53bc7ac7256f4a479a352f5348048f3214d95592e0f9011f359649043af2b68cdd4bd96104d9d6e877b7336906fc8d547038b49a6d88bc3dbc56e1/CRyNANCE/Article',
+    collection: Collection {
+      querySubs: {},
+      recordSubs: {},
+      load: [Function (anonymous)],
+      getMeta: [Function (anonymous)],
+      getAST: [Function (anonymous)],
+      validate: [Function (anonymous)],
+      isReadPubliclyAccessible: [Function (anonymous)],
+      isCallPubliclyAccessible: [Function (anonymous)],
+      isCollectionPubliclyAccessible: [Function (anonymous)],
+      create: [Function (anonymous)],
+      get: [Function (anonymous)],
+      record: [Function (anonymous)],
+      doc: [Function (anonymous)],
+      where: [Function (anonymous)],
+      sort: [Function (anonymous)],
+      limit: [Function (anonymous)],
+      onSnapshot: [Function (anonymous)],
+      after: [Function (anonymous)],
+      before: [Function (anonymous)],
+      key: [Function (anonymous)],
+      onQuerySnapshotRegister: [Function (anonymous)],
+      onRecordSnapshotRegister: [Function (anonymous)],
+      id: 'pk/0x6aec08b85c53bc7ac7256f4a479a352f5348048f3214d95592e0f9011f359649043af2b68cdd4bd96104d9d6e877b7336906fc8d547038b49a6d88bc3dbc56e1/CRyNANCE/Article',
+      client: [Client],
+      meta: [Object],
+      astCache: [Object]
+    },
+    client: Client {
+      request: [Function (anonymous)],
+      sender: [Function],
+      signer: undefined,
+      config: [Object],
+      signatureCache: {}
+    },
+    onSnapshotRegister: [Function (anonymous)],
+    exists: [Function (anonymous)],
+    toJSON: [Function (anonymous)],
+    data: {
+      author_id: 'author_id',
+      content: 'content',
+      created_at: 'created_at',
+      id: 'id5',
+      level: 'level',
+      title: 'title',
+      vote: 50
+    },
+    block: {
+      hash: '0x0000000000000000000000000000000000000000000000000000000000000000'
+    }
+  }
+]
