@@ -21,6 +21,7 @@ function App() {
     // </div>
     <div className="border-2 border-red-500">
       test
+      <button className="btn">Hello daisyUI</button>
     </div>
   );
 }
