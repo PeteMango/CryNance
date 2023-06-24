@@ -1,5 +1,4 @@
 import './App.css';
-import axios from "axios"
 
 import { HashRouter as Router, Switch, Route } from 'react-router-dom'; 
 import { useEffect, useState } from 'react';
@@ -12,10 +11,6 @@ const code = new URLSearchParams(window.location.search).get('code')
 const client_id = "app_staging_0af5473e8e0e5c8eae581173d8a04603"
 const client_secret = process.env.client_secret
 
-import { PolybaseProvider } from "@polybase/react";
-import { Polybase } from "@polybase/client";
-
-const polybase = new Polybase();
 
 function App() {
   const [accessToken, setAccesstoken] = useState()
@@ -40,7 +35,7 @@ function App() {
     }) 
   }, [code])
   return (
-    <div className="App">
+     <div className="App">
       <Router>
         <Navbar />
         <Switch>
@@ -50,6 +45,7 @@ function App() {
       </Router>
       {/* {code ? (<DashBoard code = {code}></DashBoard>) : (<div></div>)} */}
     </div>
+    
   );
 }
 
