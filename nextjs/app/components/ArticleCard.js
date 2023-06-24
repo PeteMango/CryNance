@@ -1,6 +1,6 @@
 import './Components.css'
 
-const Card = ({ header, body, imgLink, date, github, devpost }) => {
+const ArticleCard = ({ header, body, imgLink, date, github, devpost }) => {
 	return (
 		<>
 			<div className="card">
@@ -17,4 +17,4 @@ const Card = ({ header, body, imgLink, date, github, devpost }) => {
 	)
 }
 
-export default Card
+export default ArticleCard

@@ -1,21 +1,10 @@
 import './Pages.css';
-import ArticleCard from '../app/Components/article-card';
-import DashboardCard from '../app/Components/dashboard-card'
+import ArticleCard from '../components/ArticleCard';
+import DashboardCard from '../components/DashboardCard';
 
 export default function Browse() {
     return (
         <>
-            {/* <div class="center-content">
-                <div className="card">
-                    <div className="cardImage"><img src='/images/pink.png'></img></div>
-                    <div className="cardContainer">
-                        <h1 className="cardHeader">Card Header </h1>
-                        <h4 className="cardBody">Card Body</h4>
-                        <h3 className='cardDate'>Date</h3>
-                    </div>
-                </div>  
-            </div> */}
-            
             <div class="center-content">
                 <div class="join">
                     <div>
@@ -35,7 +24,6 @@ export default function Browse() {
                 <ArticleCard></ArticleCard>
                 <DashboardCard></DashboardCard>
             </div>
-            {/* <Card></Card> */}
         </>
     )
 }
