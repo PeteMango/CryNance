@@ -1,18 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
 
-import { HashRouter as Router, Switch, Route } from 'react-router-dom';
-
-import Login from './Pages/Login'
-
 function App() {
   return (
-    <div className="App">
-      <Router>
-        <Switch>
-          <Route path = '/' exact component = {Login}/>
-        </Switch>
-      </Router>
+    // <div className="App">
+    //   <header className="App-header">
+    //     <img src={logo} className="App-logo" alt="logo" />
+    //     <p>
+    //       Edit <code>src/App.js</code> and save to reload.
+    //     </p>
+    //     <a
+    //       className="App-link"
+    //       href="https://reactjs.org"
+    //       target="_blank"
+    //       rel="noopener noreferrer"
+    //     >
+    //       Learn React
+    //     </a>
+    //   </header>
+    // </div>
+    <div className="border-2 border-red-500">
+      test
+      <button className="btn">Hello daisyUI</button>
     </div>
   );
 }
