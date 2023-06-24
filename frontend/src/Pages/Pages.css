@@ -1,0 +1,30 @@
+body html {
+    margin:0;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0
+}
+
+.login-form-container {
+    display:flex;
+    height:100vh;
+    width:100vw;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    background: rgb(255,212,231);
+    background: linear-gradient(263deg, rgba(255,212,231,1) 0%, rgba(190,220,255,1) 100%);
+}
+
+.justify-center {
+    margin: 0 auto
+}
+
+.text-justify-center {
+    text-align: center;
+}
+
+.max-width {
+    width:auto
+}
