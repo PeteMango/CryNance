@@ -1,6 +1,6 @@
 import './Pages.css';
-import ArticleCard from '../components/ArticleCard';
-import DashboardCard from '../components/DashboardCard';
+import ArticleCard from '../app/components/ArticleCard';
+import DashboardCard from '../app/components/DashboardCard';
 
 export default function Browse() {
     return (

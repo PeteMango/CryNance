@@ -12,7 +12,7 @@ const Navbar = () => {
                 </div>
                 
                 <div class="navbar-end">
-                    <a href = {AUTH_URL} class="btn">Login</a>
+                    <a href = "http://localhost:3000/api/auth/signin" class="btn">Login</a>
                     {/* <button onClick={() => signIn()}>sign in</button> */}
                 </div>
             </div>      
