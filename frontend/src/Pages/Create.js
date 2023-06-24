@@ -53,76 +53,81 @@ export default function Create() {
     };
 
     const handleSaveAsDraftClick = async (event) => {
-        event.preventDefault();
-        fetch("http://localhost:4000/api/add-article", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                author_id: user,
-                content: articleContent,
-                title: title,
-                level: level.current.value,
-                isDraft: true,
-                categories: categories 
-            })
-        })
-        .then((response) => {
-            if (response.status === 200) {
-                console.log("Article saved as draft")
-            }
-            else {
-                console.log("Error saving article as draft")
-            }
-        })
-        .then((data) => {
-            console.log(data);
-        })
-        .catch((error) => {
-            console.log(error);
-        })
-        // Logic to save article as draft
+  event.preventDefault();
+  fetch("http://localhost:4000/api/add-article", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      author_id: user,
+      content: articleContent,
+      title: title,
+      level: level.current.value,
+      isDraft: true,
+      categories: categories,
+      votes: 0, // Set the votes property to 0
+    }),
+  })
+    .then((response) => {
+      if (response.status === 200) {
+        console.log("Article saved as draft");
+        return response.json();
+      } else {
+        console.log("Error saving article as draft");
+        throw new Error("Error saving article as draft");
+      }
+    })
+    .then((data) => {
+      console.log(data);
+      setPublishedArticles((prevState) => [...prevState, data]);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 
-        setPopupOpen(false);
-        setArticleContent('');
-    };
+  setPopupOpen(false);
+  setArticleContent('');
+};
 
     const handlePublishClick = async (event) => {
-        // Logic to publish article
         event.preventDefault();
         fetch("http://localhost:4000/api/add-article", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                author_id: user,
-                content: articleContent,
-                title: title,
-                level: level.current.value,
-                isDraft: false,
-                categories: categories 
-            })
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            author_id: user,
+            content: articleContent,
+            title: title,
+            level: level.current.value,
+            isDraft: false,
+            categories: categories,
+          }),
         })
-        .then((response) => {
+          .then((response) => {
             if (response.status === 200) {
-                console.log("Article saved")
+              console.log("Article saved");
+              return response.json(); // Parse the response JSON
+            } else {
+              console.log("Error saving article");
+              throw new Error("Error saving article"); // Throw an error for error handling
             }
-            else {
-                console.log("Error saving article")
-            }
-            return response.json();
-        })
-        .then((data) => {
+          })
+          .then((data) => {
             console.log(data);
-        })
-        .catch((error) => {
+            // Update the publishedArticles state with the new article
+            setPublishedArticles((prevState) => [...prevState, data]);
+          })
+          .catch((error) => {
             console.log(error);
-        })
+          });
+      
         setPopupOpen(false);
         setArticleContent('');
-    };
+      };
+      
 
     const addCategory = (e) => {
         e.preventDefault();
@@ -139,81 +144,126 @@ export default function Create() {
     }, [publishedArticles])
 
     return (
-        <div>
-            <h1>Create Page</h1>
+        <div className="p-4">
+          <h1 className="text-2xl font-bold mb-4">Create Page</h1>
+      
+          <div className="grid grid-cols-2 gap-4">
+          <div>
+  <h2 className="text-lg font-semibold mb-2">Published Articles</h2>
+  <div className="bg-white rounded-lg shadow-md p-4">
+    {/* Render published articles here */}
+    {publishedArticles &&
+      publishedArticles.map((article) => (
+        !article.isDraft && ( // Updated condition
+          <div key={article.id}>
+            <p className="text-gray-600 font-semibold">{article.author_id}</p>
+            <h3 className="text-xl font-bold mb-2">{article.title}</h3>
+            <p>{article.content}</p>
+            <p>{article.votes}</p>
+          </div>
+        )
+      ))}
+  </div>
+</div>
 
-            <div className="container">
-                <div className="articles-container">
-                    <h2>Published Articles</h2>
-                    {/* Render published articles here */}
-                    {
-                        publishedArticles && publishedArticles.map((article) => (
-                            article.isDraft == false && (
-                                <div key={article.id}>
-                                    {article.author_id}
-                                    {article.title}
-                                    {article.content}
-                                    {article.votes}
-                                </div>
-                            )
+<div>
+  <h2 className="text-lg font-semibold mb-2">Articles in Draft</h2>
+  <div className="bg-white rounded-lg shadow-md p-4">
+    {/* Render articles in draft here */}
+    {publishedArticles &&
+      publishedArticles.map((article) => (
+        article.isDraft && ( // Updated condition
+          <div key={article.id}>
+            <p className="text-gray-600 font-semibold">{article.author_id}</p>
+            <h3 className="text-xl font-bold mb-2">{article.title}</h3>
+            <p>{article.content}</p>
+            <p>{article.votes}</p>
+          </div>
+        )
+      ))}
+  </div>
+</div>
 
-                        ))
-                    }
-                </div>
-
-                <div className="articles-container">
-                    <h2>Articles in Draft</h2>
-                    {/* Render articles in draft here */}
-                    {
-                        publishedArticles && publishedArticles.map((article) => (
-                            article.isDraft == true && (
-                                <div key={article.id}>
-                                    {article.author_id}
-                                    {article.title}
-                                    {article.content}
-                                    {article.votes}
-                                </div>
-                            )
-
-                        ))
-                    }
-                </div>
-            </div>
-
-            <button onClick={handleNewArticleClick}>New Article</button>
-
-            {isPopupOpen && (
-                <form>
-                    <h2>New Article</h2>
-                    <label>
-                        ARTICLE TITLE: <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
-                    </label>
-                    <br />
-                    <label>
-                        ADD TEXT:
-                        <textarea
-                            value={articleContent}
-                            onChange={(e) => setArticleContent(e.target.value)}/>
-                    </label>
-                    <br />
-                    <select ref={level}  >
-                        <option value="">Select Tier of Article</option>
-                        <option value="free">Free</option>
-                        <option value="premium">Premium</option>
-                        <option value="all knower">All Knower</option>
-                    </select>
-                    <br />
-                    <label>
-                        ADD CATEGORIES:
-                        <input type="text" value={query} onChange={(e) => setQuery(e.target.value)}/>
-                        <button onClick={addCategory} className="btn">Add Category</button>
-                    </label>
-                    <br />
-                    <button onClick={handleCancelClick} className="btn">Cancel</button>
-                    <button type="submit" onClick={handleSaveAsDraftClick} className="btn">Save as Draft</button>
-                    <button type="submit" onClick={handlePublishClick} className="btn">Publish</button>
-                </form>
-            )}
+          </div>
+      
+          <button
+            className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
+            onClick={handleNewArticleClick}
+          >
+            New Article
+          </button>
+      
+          {isPopupOpen && (
+            <form className="mt-4 bg-white rounded-lg shadow-md p-4">
+              <h2 className="text-xl font-bold mb-4">New Article</h2>
+              <label className="block mb-2">
+                ARTICLE TITLE:
+                <input
+                  type="text"
+                  className="border border-gray-300 rounded-md px-2 py-1 w-full"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                />
+              </label>
+              <br />
+              <label className="block mb-2">
+                ADD TEXT:
+                <textarea
+                  className="border border-gray-300 rounded-md px-2 py-1 w-full"
+                  value={articleContent}
+                  onChange={(e) => setArticleContent(e.target.value)}
+                />
+              </label>
+              <br />
+              <select
+                ref={level}
+                className="border border-gray-300 rounded-md px-2 py-1 w-full"
+              >
+                <option value="">Select Tier of Article</option>
+                <option value="free">Free</option>
+                <option value="premium">Premium</option>
+                <option value="all knower">All Knower</option>
+              </select>
+              <br />
+              <label className="block mb-2">
+                ADD CATEGORIES:
+                <input
+                  type="text"
+                  className="border border-gray-300 rounded-md px-2 py-1 w-full"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                />
+                <button
+                  onClick={addCategory}
+                  className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-1 px-2 rounded ml-2"
+                >
+                  Add Category
+                </button>
+              </label>
+              <br />
+              <button
+                onClick={handleCancelClick}
+                className="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded mr-2"
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                onClick={handleSaveAsDraftClick}
+                className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded mr-2"
+              >
+                Save as Draft
+              </button>
+              <button
+                type="submit"
+                onClick={handlePublishClick}
+                className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
+              >
+                Publish
+              </button>
+            </form>
+          )}
         </div>
-    );
+      );
+      
 }
