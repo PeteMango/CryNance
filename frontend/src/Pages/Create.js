@@ -154,7 +154,7 @@ export default function Create() {
     {/* Render published articles here */}
     {publishedArticles &&
       publishedArticles.map((article) => (
-        !article.isDraft && ( // Updated condition
+        article.isDraft === 0 && ( // Updated condition
           <div key={article.id}>
             <p className="text-gray-600 font-semibold">{article.author_id}</p>
             <h3 className="text-xl font-bold mb-2">{article.title}</h3>
@@ -172,7 +172,7 @@ export default function Create() {
     {/* Render articles in draft here */}
     {publishedArticles &&
       publishedArticles.map((article) => (
-        article.isDraft && ( // Updated condition
+        article.isDraft === 1 && ( // Updated condition
           <div key={article.id}>
             <p className="text-gray-600 font-semibold">{article.author_id}</p>
             <h3 className="text-xl font-bold mb-2">{article.title}</h3>
