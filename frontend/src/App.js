@@ -7,7 +7,6 @@ import { useEffect, useState } from 'react';
 
 import Navbar from './Components/Navbar'; 
 import Login from './Pages/Login'
-import DashBoard from './Components/DashBoard';
 
 const code = new URLSearchParams(window.location.search).get('code')
 const client_id = "app_staging_0af5473e8e0e5c8eae581173d8a04603"
