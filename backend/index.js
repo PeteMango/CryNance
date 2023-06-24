@@ -104,7 +104,7 @@ app.post("/api/add-article", async (req, res) => {
 })
 
 app.get("/api/get-articles-by-authorID/:authorID", async(req, res) => {
-  const authorID = req.params.author;
+  const authorID = req.params.authorID;
   try {
     const records = await articleCollectionReference.where("author_id", "==", authorID).get();
     // Array of records is available under the data property
