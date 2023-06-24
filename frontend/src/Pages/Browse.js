@@ -33,7 +33,6 @@ export default function Browse() {
                     </div>
                 </div>
                 <ArticleCard></ArticleCard>
-                <DashboardCard></DashboardCard>
             </div>
             {/* <Card></Card> */}
         </>
