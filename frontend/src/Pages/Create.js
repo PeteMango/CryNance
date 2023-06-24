@@ -81,7 +81,7 @@ export default function Create() {
                         <option value="All Knower">All Knower</option>
                     </select> */}
                     <input type="text" value={query} onChange={(e) => setQuery(e.target.value)}/>
-                    <button onSubmit={addCategory}>Add Category</button>
+                    <button onClick={addCategory}>Add Category</button>
                     {/* <button onClick={handleCancelClick}>Cancel</button>
                     <button type="submit" onClick={handleSaveAsDraftClick}>Save as Draft</button>
                     <button type="submit" onClick={handlePublishClick}>Publish</button> */}
