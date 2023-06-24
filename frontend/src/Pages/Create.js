@@ -13,26 +13,26 @@ export default function Create() {
     const [query, setQuery] = useState("");
     const [categories, setCategories] = useState([]);
 
-    // const handleNewArticleClick = () => {
-    //     setPopupOpen(true);
-    // };
+    const handleNewArticleClick = () => {
+        setPopupOpen(true);
+    };
 
-    // const handleCancelClick = () => {
-    //     setPopupOpen(false);
-    //     setArticleContent('');
-    // };
+    const handleCancelClick = () => {
+        setPopupOpen(false);
+        setArticleContent('');
+    };
 
-    // const handleSaveAsDraftClick = () => {
-    //     // Logic to save article as draft
-    //     setPopupOpen(false);
-    //     setArticleContent('');
-    // };
+    const handleSaveAsDraftClick = () => {
+        // Logic to save article as draft
+        setPopupOpen(false);
+        setArticleContent('');
+    };
 
-    // const handlePublishClick = () => {
-    //     // Logic to publish article
-    //     setPopupOpen(false);
-    //     setArticleContent('');
-    // };
+    const handlePublishClick = () => {
+        // Logic to publish article
+        setPopupOpen(false);
+        setArticleContent('');
+    };
 
     const addCategory = (e) => {
         e.preventDefault();
@@ -63,12 +63,12 @@ export default function Create() {
                 </div>
             </div>
 
-            {/* <button onClick={handleNewArticleClick}>New Article</button> */}
+            <button onClick={handleNewArticleClick}>New Article</button>
 
             {isPopupOpen && (
                 <form>
                     <h2>New Article</h2>
-                    {/* <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+                    <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
                     <textarea
                         value={articleContent}
                         onChange={(e) => setArticleContent(e.target.value)}
@@ -79,7 +79,7 @@ export default function Create() {
                         <option value="free">Free</option>
                         <option value="premium">Premium</option>
                         <option value="All Knower">All Knower</option>
-                    </select> */}
+                    </select>
                     <input type="text" value={query} onChange={(e) => setQuery(e.target.value)}/>
                     <button onClick={addCategory}>Add Category</button>
                     {/* <button onClick={handleCancelClick}>Cancel</button>
