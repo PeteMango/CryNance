@@ -4,6 +4,7 @@ import DashboardCard from '../Components/dashboard-card'
 import {useEffect, useState} from 'react';
 
 export default function Browse() {
+
     const [articles, setArticles] = useState([])
     useEffect(() => {
         fetchArticles();
@@ -137,8 +138,21 @@ export default function Browse() {
                         <button class="btn join-item">Search</button>
                     </div>
                 </div>
-                <ArticleCard></ArticleCard>
-                <DashboardCard></DashboardCard>
+                {articles && articles.sort((a,b) => b.vote - a.vote)
+                    .map((article) => {
+                        return (
+                            <ArticleCard
+                                title={article.title}
+                                author={article.author_id}
+                                date={article.created_at}
+                                body={article.content}
+                                votes={article.vote}
+                                level={article.level}
+                            />
+                        )
+                    })
+                }
+                
             </div>
             {/* <Card></Card> */}
         </>
