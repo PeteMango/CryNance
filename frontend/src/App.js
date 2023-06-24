@@ -1,11 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
 
 import { HashRouter as Router, Switch, Route } from 'react-router-dom'; 
 
 import Navbar from './Components/Navbar'; 
-import Login from './Pages/Login'
-
+import Login from './Pages/Login';
+import Browse from './Pages/Browse';
 
 function App() {
   return (
@@ -13,8 +12,9 @@ function App() {
       <Router>
         <Navbar />
         <Switch>
-          <Route path='/' exact component = {Login}></Route>
-        </Switch>
+          <Route path = '/' exact component = {Login}/>
+          <Route path = '/browse' component = {Browse}/>
+        </Switch> 
       </Router>
     </div>
   );
