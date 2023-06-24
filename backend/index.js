@@ -70,7 +70,7 @@ function handleErrorResponse(res, error, statusCode, message) {
 }
 app.post("/api/add-article", async (req, res) => {
   // id author_id created_at content title level vote
-  const {author_id, content, title, level} = req.body;
+  const {author_id, content, title, level, isDraft, categories} = req.body;
   const id = uuidv4();
   try {
     const recordData = await articleCollectionReference.create([
@@ -80,6 +80,8 @@ app.post("/api/add-article", async (req, res) => {
       content,
       title,
       level,
+      (isDraft ? 0 : 1),
+      categories
     ]);
     res.status(200).json(recordData);
     // {
@@ -210,6 +212,18 @@ app.post("/api/downvote-by-id", async (req, res) => {
   }
 })
 
-
+app.post("/api/publish-article-by-id", async (req, res) => {
+  const {id} = req.body;
+  try {
+    const recordData = await articleCollectionReference
+    .record(id)
+    .call("Publish");
+    console.log(recordData.data);
+    res.status(200).json(recordData.data);
+  }
+  catch (error) {
+    handleErrorResponse(res, error, 500, "Error publishing article");
+  }
+})
 
 // add to database schema - isDraft, Category
