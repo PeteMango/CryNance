@@ -12,8 +12,8 @@ const Navbar = () => {
                 </div>
                 
                 <div class="navbar-end">
-                    {/* <a href = {AUTH_URL} class="btn">Login</a> */}
-                    <button onClick={() => signIn()}>sign in</button>
+                    <a href = {AUTH_URL} class="btn">Login</a>
+                    {/* <button onClick={() => signIn()}>sign in</button> */}
                 </div>
             </div>      
         </>
