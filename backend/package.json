@@ -10,7 +10,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "@helia/interface": "^1.2.1",
+    "@polybase/client": "^0.6.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "ipfs": "^0.66.1",
+    "ipfs-http-client": "^60.0.1",
+    "orbit-db": "^0.29.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
