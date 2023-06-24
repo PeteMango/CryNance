@@ -104,7 +104,7 @@ app.post("/api/add-article", async (req, res) => {
 })
 
 app.get("/api/get-articles-by-authorID/:authorID", async(req, res) => {
-  const authorID = req.params.author;
+  const authorID = req.params.authorID;
   try {
     const records = await articleCollectionReference.where("author_id", "==", authorID).get();
     // Array of records is available under the data property
@@ -228,6 +228,18 @@ app.post("/api/publish-article-by-id", async (req, res) => {
   }
   catch (error) {
     handleErrorResponse(res, error, 500, "Error publishing article");
+  }
+})
+
+app.get("/api/get-article-by-id/:id", async (req, res) => {
+  const id = req.params.id;
+  try {
+    const record = await articleCollectionReference.record(id).get();
+    console.log(record.data);
+    res.status(200).json(record.data);
+  }
+  catch (error) {
+    handleErrorResponse(res, error, 500, "Error getting article by id");
   }
 })
 
