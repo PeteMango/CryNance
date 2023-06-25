@@ -7,10 +7,8 @@ import Navbar from './Components/Navbar';
 import Login from './Pages/Login';
 import Browse from './Pages/Browse';
 import Create from './Pages/Create';
+import { Auth } from './Pages/Auth';
 
-const code = new URLSearchParams(window.location.search).get('code')
-const client_id = "app_staging_0af5473e8e0e5c8eae581173d8a04603"
-const client_secret = process.env.client_secret
 
 // import { PolybaseProvider } from "@polybase/react";
 // import { Polybase } from "@polybase/client";
@@ -19,6 +17,10 @@ const client_secret = process.env.client_secret
 
 function App() {
   const [accessToken, setAccesstoken] = useState()
+  const code = new URLSearchParams(window.location.search).get('code')
+  const client_id = "app_staging_e65a6e24ba4f9f99ce1c64aa1aa38fbf"
+  const client_secret = "sk_bac953490e78e30066d5f646a44478ec8e263d62d4a7d2e4"
+  localStorage.setItem('code', code);
 
   const data = new URLSearchParams()
   data.append('code', {code})
@@ -47,6 +49,7 @@ function App() {
           <Route path = '/' exact component = {Login}/>
           <Route path = '/browse' component = {Browse}/>
           <Route path = '/create' component = {Create}/>
+          <Route path = '/auth' component = {Auth} />
         </Switch> 
       </Router>
       {/* {code ? (<DashBoard code = {code}></DashBoard>) : (<div></div>)} */}
