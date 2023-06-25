@@ -175,14 +175,13 @@ export default function Create() {
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Create An Article!</h1>
 
       <div
         className="center-content"
         style={{ backgroundColor: "transparent" }}
       >
         <div>
-          <h2 className="text-lg font-semibold mb-2">Articles</h2>
+          <h2 className="text-lg font-semibold mb-2" style={{color:"#313131"}}>My Articles</h2>
 
           {/* Render published and draft articles here */}
           {publishedArticles &&
@@ -191,20 +190,18 @@ export default function Create() {
             .map((article) => (
               <div className="bg-white rounded-lg shadow-md p-4 margin-sm">
                 <div key={article.id}>
-                  <p className="text-gray-600 font-semibold">
-                    {article.author_id}
-                  </p>
-                  <h3 className="text-xl font-bold mb-2">{article.title}</h3>
-                  <p>{article.content}</p>
-                  <p>{article.votes}</p>
+                  <h3 className="text-xl font-bold mb-2" style={{color:"#313131"}}>{article.title}</h3>
                   {article.isDraft ? (
-                    <p className="text-blue-500 font-semibold">Draft</p>
+                    <p className="text-blue-500 font-semibold" style={{margin:'10px 0'}}>Draft</p>
                   ) : (
-                    <p className="text-green-500 font-semibold">Published</p>
+                    <p className="text-green-500 font-semibold" style={{margin:'10px 0'}}>Published</p>
                   )}
-                  <button class="btn btn-circle btn-outline" onClick={() => handleDelete(article.id)}>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                  <p style={{color:"#313131"}}>{article.content}</p>
+                  <p>{article.votes}</p>
+                  
+                  <button class="btn btn-md" style={{marginTop:'10px'}} onClick={() => handleDelete(article.id)}>Delete Article
                   </button>
+                  
                 </div>
               </div>
             ))}
