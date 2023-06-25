@@ -12,6 +12,27 @@ const Navbar = () => {
   const handleLogoClick = () => {
     history.push("/");
   };
+
+  const addUser = () => {
+    const hash = localStorage.getItem("user");
+    fetch("http://localhost:4000/api/add-username", {
+      method: "POST",
+      body: JSON.stringify({
+        nullifier_hash: hash,
+      })
+    })
+    .then((res) => {
+      console.log(res);
+      return res.json();
+    })
+    .then((data) => {
+      console.log(data);
+      localStorage.setItem("username", data.username);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+  }
   return (
     <nav className="navbar bg-base-100 flex justify-between items-center px-4">
       <div className="navbar-start">
@@ -48,6 +69,7 @@ const Navbar = () => {
                 console.log(credential_type);
                 localStorage.setItem("user", nullifier_hash);
                 localStorage.setItem("authentication", credential_type);
+                addUser();
               }}
             >
               {({ open }) => <button onClick={open}>Sign In</button>}
