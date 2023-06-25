@@ -1,9 +1,33 @@
 import "./Pages.css";
+import panda from "../Images/panda.png"
+import news from "../Images/news.png"
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function Login() {
   return (
     <>
-      <div class="login-form-container"></div>
+      <div class="login-form-container pb-24">
+        <div className="basis-5/12 ">
+          <div className="flex-col">
+            <p className="text-7xl text-sky-950">CryNance</p>
+            <p className="text-xl px-19.5 pt-14 text-sky-800 w-10/12">CryNance leverages decentralized blockchains technologies to empower journalists & authors to publish articles securely.</p>
+            <div className="flex flex-row m-8">
+              {/* <button className="btn basis-1/3 mx-4">
+                <Link to="/browse">Browse</Link>
+              </button>
+              <button className="btn basis-1/3 mx-4">
+                <Link to="/create">Create</Link>
+              </button> */}
+
+            </div>
+          </div>
+        </div>
+         <div className="basis-1/5">
+          <div className="flex">
+            <img src={news} alt="panda bear" />
+          </div> 
+         </div>  
+      </div>
       {/* <div class="login-form-container">
             <div class="card w-96 bg-base-100 shadow-xl">
                 <div class="form-control">

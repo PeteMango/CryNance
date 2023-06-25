@@ -45,7 +45,7 @@ const ArticleCard = ({
         setButtonText("Read");
         setVisible(false)
       }
-      
+
 
     }
   };
