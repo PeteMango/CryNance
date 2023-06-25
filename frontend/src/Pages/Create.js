@@ -5,7 +5,7 @@ export default function Create() {
   const [articleContent, setArticleContent] = useState("");
   const [title, setTitle] = useState("");
   const level = useRef("");
-  const user = localStorage.getItem("user");
+  const user = localStorage.getItem("username") || localStorage.getItem("user");
   useEffect(() => {
     console.log("user", user);
   }, [user]);
