@@ -142,7 +142,7 @@ export default function Create() {
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Create Page</h1>
+      <h1 className="text-2xl font-bold mb-4">Create An Article!</h1>
 
       <div className="center-content" style={{backgroundColor:"transparent"}}>
         <div>
