@@ -9,3 +9,11 @@
 .cardImage { width:15vw; margin:2vw; height:auto; overflow:hidden; }
 .cardButton { align-items:center; justify-content:center; letter-spacing:0.1vw; text-transform:uppercase; padding:0.3vw 0.5vw; height:auto; width:auto; display:inline-block; text-decoration:none; font-size:0.8rem; color:black; border:0.1vw solid black; border-radius:1.5vmin; background-size:100vw 100vw; transition:0.5s; margin-right:15px}
 .cardButton:hover  { color:#212427; background:grey; background-position:50vw 0; }
+
+.cardButton.upvoted {
+    background-color: green;
+}
+
+.cardButton.downvoted {
+    background-color: red;
+}

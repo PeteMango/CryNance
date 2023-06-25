@@ -84,12 +84,16 @@ export default function Browse() {
                     .map((article) => {
                         return (
                             <ArticleCard
+                                key={article.id}
+                                id={article.id}
                                 title={article.title}
                                 author={article.author_id}
                                 date={article.created_at}
                                 body={article.content}
                                 votes={article.vote}
                                 level={article.level}
+                                Upvote={handleUpvote}
+                                Downvote={handleDownvote}
                             />
                         )
                     })
