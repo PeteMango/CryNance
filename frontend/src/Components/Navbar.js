@@ -14,22 +14,18 @@ const Navbar = () => {
   return (
     <nav className="navbar bg-base-100 flex justify-between items-center px-4">
       <div className="navbar-start">
-        <button className="btn btn-ghost normal-case text-xl" onClick={handleLogoClick}>
-          CRyNance
-        </button>
+        <button className="btn btn-ghost normal-case text-xl" onClick={handleLogoClick}>CRyNance</button>
       </div>
       <div className="navbar-center flex-auto space-x-2">
-        <Link to="/browse" className="btn btn-primary transition duration-300 ease-in-out transform hover:scale-105">
-          Browse
-        </Link>
-        <Link to="/create" className="btn btn-primary transition duration-300 ease-in-out transform hover:scale-105">
-          Create
-        </Link>
+        
       </div>
       <div className="navbar-end">
-        <a href={AUTH_URL} className="btn btn-secondary transition duration-300 ease-in-out transform hover:scale-105">
-          Login
-        </a>
+        {/* <a href={AUTH_URL} className="btn btn-secondary transition duration-300 ease-in-out transform hover:scale-105">Login</a>
+        <Link to="/browse" className="btn btn-primary transition duration-300 ease-in-out transform hover:scale-105">Browse</Link>
+        <Link to="/create" className="btn btn-primary transition duration-300 ease-in-out transform hover:scale-105">Create</Link> */}
+        <ul class="menu menu-horizontal px-1">
+          <li><a>Link</a></li>
+        </ul>
       </div>
     </nav>
   );
