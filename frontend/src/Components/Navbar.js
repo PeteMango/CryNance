@@ -8,11 +8,10 @@ const code = new URLSearchParams(window.location.search).get("code");
 
 const Navbar = () => {
   const history = useHistory();
-
+  let nullifier_hash, credential_type;
   const handleLogoClick = () => {
     history.push("/");
   };
-
   return (
     <nav className="navbar bg-base-100 flex justify-between items-center px-4">
       <div className="navbar-start">
@@ -41,7 +40,15 @@ const Navbar = () => {
               app_id="app_staging_0af5473e8e0e5c8eae581173d8a04603" // obtain this from developer.worldcoin.org
               action="my_action"
               enableTelemetry
-              onSuccess={(result) => console.log(result)} // pass the proof to the API or your smart contract
+              onSuccess={(result) => {
+                console.log(result);
+                nullifier_hash = result.nullifier_hash;
+                credential_type = result.credential_type;
+                console.log(nullifier_hash);
+                console.log(credential_type);
+                localStorage.setItem("user", nullifier_hash);
+                localStorage.setItem("authentication", credential_type);
+              }}
             >
               {({ open }) => <button onClick={open}>Sign In</button>}
             </IDKitWidget>
