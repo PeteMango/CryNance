@@ -33,3 +33,13 @@
 .margin-sm {
     margin: 15px 0;
 }
+
+.subtitle-font {
+    font-size:1.2rem;
+    font-weight:400;
+}
+
+.body-font {
+    font-size:1rem;
+    font-weight:300
+}

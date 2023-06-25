@@ -247,78 +247,52 @@ export default function Create() {
         >
           New Article
         </button>
-      </div>
-
-      {isPopupOpen && (
-        <form className="mt-4 bg-white rounded-lg shadow-md p-4">
-          <h2 className="text-xl font-bold mb-4">New Article</h2>
-          <label className="block mb-2">
-            ARTICLE TITLE:
-            <input
-              type="text"
-              className="border border-gray-300 rounded-md px-2 py-1 w-full"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-          </label>
-          <br />
-          <label className="block mb-2">
-            ADD TEXT:
-            <textarea
-              className="border border-gray-300 rounded-md px-2 py-1 w-full"
-              value={articleContent}
-              onChange={(e) => setArticleContent(e.target.value)}
-            />
-          </label>
-          <br />
-          <select
-            ref={level}
-            className="border border-gray-300 rounded-md px-2 py-1 w-full"
-          >
+        {isPopupOpen && (
+        <form className="mt-4 bg-white rounded-lg shadow-md p-4 margin-sm">
+          <h2 className="text-md font-bold mb-4">Title
+            <input type="text" className="border border-gray-300 rounded-md px-2 py-1 w-full body-font" value={title} onChange={(e) => setTitle(e.target.value)}/>
+          </h2>
+          <h2 className="text-md font-bold mb-4">Article Body
+            <textarea className="border border-gray-300 rounded-md px-2 py-1 w-full body-font" value={articleContent} onChange={(e) => setArticleContent(e.target.value)}/>
+          </h2>
+          <select ref={level} className="border border-gray-300 rounded-md px-2 py-1 w-full">
             <option value="">Select Tier of Article</option>
             <option value="free">Free</option>
             <option value="premium">Premium</option>
             <option value="all knower">All Knower</option>
           </select>
-          <br />
-          <label className="block mb-2">
-            ADD CATEGORIES:
-            <input
-              type="text"
-              className="border border-gray-300 rounded-md px-2 py-1 w-full"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-            />
-            <button
-              onClick={addCategory}
-              className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-1 px-2 rounded ml-2"
-            >
+          <br/>
+          <br/>
+          <label className="block mb-2 text-md font-bold">Add Categories
+            <input type="text" className="border border-gray-300 rounded-md px-2 py-1 w-full body-font" value={query} onChange={(e) => setQuery(e.target.value)}/>
+            <button onClick={addCategory} className="btn btn-sm" style={{margin:'5px 0 0 0 '}}>
               Add Category
             </button>
           </label>
           <br />
           <button
             onClick={handleCancelClick}
-            className="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded mr-2"
+            className="btn" style={{marginRight:'10px'}}
           >
             Cancel
           </button>
           <button
             type="submit"
             onClick={handleSaveAsDraftClick}
-            className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded mr-2"
+            className="btn" style={{marginRight:'10px'}}
           >
             Save as Draft
           </button>
           <button
             type="submit"
             onClick={handlePublishClick}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
+            class="btn btn-success"
           >
             Publish
           </button>
         </form>
       )}
+      </div>
     </div>
   );
 }

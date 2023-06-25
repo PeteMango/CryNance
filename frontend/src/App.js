@@ -19,10 +19,10 @@ function App() {
           <Route path="/" exact component={Login} />
           <Route path="/browse" component={Browse} />
           {/* <Route path="*" component={Error} /> */}
-          {/* <Route path="/create" component={Create} /> */}
-          {
+          <Route path="/create" component={Create} />
+          {/* {
             auth === "orb" ? <Route path="/create" component={Create} /> : null
-          }
+          } */}
         </Switch>
       </Router>
     </div>
