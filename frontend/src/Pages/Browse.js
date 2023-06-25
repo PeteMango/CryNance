@@ -1,9 +1,17 @@
 import "./Pages.css";
 import ArticleCard from "../Components/article-card";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo} from "react";
 
 export default function Browse() {
   const [articles, setArticles] = useState([]);
+  const [sort, setSort] = useState("");
+  const [query, setQuery] = useState("");
+
+  const filteredArticles = useMemo(() => {
+    return articles.filter((item) => {
+      return item.title.toLowerCase().includes(query.toLowerCase());
+    })
+  }, [articles, query])
 
   useEffect(() => {
     fetchArticles();
@@ -81,12 +89,14 @@ export default function Browse() {
         <div className="join">
           <div>
             <input
+              type="text"
               className="input input-bordered join-item"
               placeholder="Search..."
+              value={query} onChange={(e) => setQuery(e.target.value)}
             />
           </div>
           <select className="select select-bordered join-item">
-            <option disabled selected>
+            <option disabled selected value={sort}>
               Sort By
             </option>
             <option>Recent</option>
@@ -96,8 +106,8 @@ export default function Browse() {
             <button className="btn join-item">Search</button>
           </div>
         </div>
-        {articles &&
-          articles
+        {filteredArticles &&
+          filteredArticles
             // .sort((a, b) => b.vote - a.vote)
             .map((article) => {
               return (
@@ -115,6 +125,59 @@ export default function Browse() {
                 />
               );
             })}
+        {/* {
+          sort === "Recent" ? filteredArticles
+            .sort((a, b) => b.created_at - a.created_at)
+            .map((article) => {
+              return (
+                <ArticleCard
+                  key={article.id}
+                  id={article.id}
+                  title={article.title}
+                  author={article.author_id}
+                  date={article.created_at}
+                  body={article.content}
+                  votes={article.vote}
+                  level={article.level}
+                  Upvote={handleUpvote}
+                  Downvote={handleDownvote}
+                />
+              );
+            }) : sort === "Rating" ? filteredArticles
+              .sort((a, b) => b.vote - a.vote)
+              .map((article) => {
+                return (
+                  <ArticleCard
+                    key={article.id}
+                    id={article.id}
+                    title={article.title}
+                    author={article.author_id}
+                    date={article.created_at}
+                    body={article.content}
+                    votes={article.vote}
+                    level={article.level}
+                    Upvote={handleUpvote}
+                    Downvote={handleDownvote}
+                  />
+                );
+              }) : filteredArticles
+                .map((article) => {
+                  return (
+                    <ArticleCard
+                      key={article.id}
+                      id={article.id}
+                      title={article.title}
+                      author={article.author_id}
+                      date={article.created_at}
+                      body={article.content}
+                      votes={article.vote}
+                      level={article.level}
+                      Upvote={handleUpvote}
+                      Downvote={handleDownvote}
+                    />
+                  );
+                })
+        } */}
       </div>
     </>
   );

@@ -48,6 +48,7 @@ export default function Create() {
   }, [publishedArticles])
 
   useEffect(() => {
+  const fetchArticles = async () => {
     fetch(
       `http://localhost:4000/api/get-articles-by-authorID/${localStorage.getItem(
         "user"
@@ -74,6 +75,10 @@ export default function Create() {
       .catch((error) => {
         console.log(error);
       });
+  }
+
+  useEffect(() => {
+    fetchArticles();
   }, []);
 
   const handleNewArticleClick = () => {
@@ -189,6 +194,7 @@ export default function Create() {
       })
     })
     .then((response) => {
+      fetchArticles();
       if (response.status === 200) {
         console.log("Article deleted");
         return response.json();
@@ -215,7 +221,9 @@ export default function Create() {
 
           {/* Render published and draft articles here */}
           {publishedArticles &&
-            publishedArticles.map((article) => (
+            publishedArticles
+            .sort((a, b) => new Date(a.created_at) - new Date(b.created_at))
+            .map((article) => (
               <div className="bg-white rounded-lg shadow-md p-4 margin-sm">
                 <div key={article.id}>
                   <p className="text-gray-600 font-semibold">
