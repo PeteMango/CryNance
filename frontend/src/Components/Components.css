@@ -10,6 +10,14 @@
     transition: 0.2s;
 }
 
+/* .cardBody {
+    display: -webkit-box;
+    -webkit-line-clamp: 20000000000000;
+    -webkit-box-orient: vertical;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    /* background: -webkit-linear-gradient(#fff, #000); */
+    -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent); */
 .card:hover {
     box-shadow: 0 0 30px 5px var(--col1)
 }
@@ -28,6 +36,7 @@
 .cardBody {
     grid-column-start: 1;
     position: relative;
+    /* background:linear-gradient(transparent 150px, white); */
     font-size: 0.8rem;
     color: #313131;
     padding: 0.5vw 0 1vw 0;
