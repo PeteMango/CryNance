@@ -13,6 +13,41 @@ export default function Create() {
   const [categories, setCategories] = useState([]);
   const [publishedArticles, setPublishedArticles] = useState(null);
 
+  const calculateSuperuser = () => {
+    if (publishedArticles) {
+      let totalVotes = 0;
+      publishedArticles.forEach((article) => {
+        totalVotes += article.vote;
+        console.log("totalvotes: ", totalVotes);
+      });
+      const averageVotes = totalVotes / publishedArticles.length;
+      const authentication = localStorage.getItem("authentication");
+      let value = averageVotes - 40;
+      console.log("value: ", value);
+      if (authentication === "orb") {
+        value = 2 * value;
+      }
+      else if (authentication === "phone") {
+        value = 1.5 * value;
+      }
+      else {
+        value = 1 * value;
+      }
+      if (value > 0) {
+        localStorage.setItem("superuser", "true");
+        return true;
+      }
+      localStorage.setItem("superuser", "false");
+      return false;
+    }
+    localStorage.setItem("superuser", "false");
+    return false;
+  }
+  useEffect(() => {
+    calculateSuperuser();
+  }, [publishedArticles])
+
+  useEffect(() => {
   const fetchArticles = async () => {
     fetch(
       `http://localhost:4000/api/get-articles-by-authorID/${localStorage.getItem(
