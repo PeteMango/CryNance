@@ -31,3 +31,7 @@
     background-color: white;
     padding:30px
 }
+
+.margin-sm {
+    margin: 15px 0;
+}
