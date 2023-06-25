@@ -47,7 +47,7 @@ export default function Create() {
     calculateSuperuser();
   }, [publishedArticles])
 
-  useEffect(() => {
+  // useEffect(() => {
   const fetchArticles = async () => {
     fetch(
       `http://localhost:4000/api/get-articles-by-authorID/${localStorage.getItem(
@@ -210,7 +210,7 @@ export default function Create() {
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Create An Article!</h1>
+      <h1 className="text-2xl font-bold mb-4"></h1>
 
       <div
         className="center-content"
