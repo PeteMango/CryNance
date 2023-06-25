@@ -19,20 +19,20 @@ const Navbar = () => {
       method: "POST",
       body: JSON.stringify({
         nullifier_hash: hash,
+      }),
+    })
+      .then((res) => {
+        console.log(res);
+        return res.json();
       })
-    })
-    .then((res) => {
-      console.log(res);
-      return res.json();
-    })
-    .then((data) => {
-      console.log(data);
-      localStorage.setItem("username", data.username);
-    })
-    .catch((error) => {
-      console.log(error);
-    })
-  }
+      .then((data) => {
+        console.log(data);
+        localStorage.setItem("username", data.username);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <nav className="navbar bg-base-100 flex justify-between items-center px-4">
       <div className="navbar-start">
