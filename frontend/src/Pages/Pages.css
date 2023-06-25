@@ -1,14 +1,12 @@
-
-
 .login-form-container {
-    display:flex;
-    height:100vh;
-    width:100vw;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
     align-items: center;
     align-content: center;
     justify-content: center;
-    background: rgb(255,212,231);
-    background: linear-gradient(263deg, rgba(255,212,231,1) 0%, rgba(190,220,255,1) 100%);
+    background: rgb(255, 212, 231);
+    background: linear-gradient(263deg, rgba(255, 212, 231, 1) 0%, rgba(190, 220, 255, 1) 100%);
 }
 
 
@@ -21,15 +19,15 @@
 }
 
 .max-width {
-    width:auto
+    width: auto
 }
 
 .center-content {
-    height:auto;
-    width:55vw;
+    height: auto;
+    width: 55vw;
     margin: 0 auto;
     background-color: transparent;
-    padding:30px
+    padding: 30px
 }
 
 .margin-sm {
