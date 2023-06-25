@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from "react";
 
 export default function Create() {
   const [isPopupOpen, setPopupOpen] = useState(false);
-  const [articleContent, setArticleContent] = useState('');
-  const [title, setTitle] = useState('');
-  const level = useRef('');
-  const user = localStorage.getItem('user');
+  const [articleContent, setArticleContent] = useState("");
+  const [title, setTitle] = useState("");
+  const level = useRef("");
+  const user = localStorage.getItem("user");
   useEffect(() => {
     console.log("user", user);
   }, [user]);
@@ -14,29 +14,33 @@ export default function Create() {
   const [publishedArticles, setPublishedArticles] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:4000/api/get-articles-by-authorID/${localStorage.getItem('user')}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
+    fetch(
+      `http://localhost:4000/api/get-articles-by-authorID/${localStorage.getItem(
+        "user"
+      )}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
       }
-    })
-    .then((response) => {
-      if (response.status === 200) {
-        console.log("Articles retrieved")
-      }
-      else {
-        console.log("Error retrieving articles")
-      }
-      return response.json();
-    })
-    .then((data) => {
-      console.log(data);
-      setPublishedArticles(data);
-    })
-    .catch((error) => {
-      console.log(error);
-    })
-  }, [])
+    )
+      .then((response) => {
+        if (response.status === 200) {
+          console.log("Articles retrieved");
+        } else {
+          console.log("Error retrieving articles");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        setPublishedArticles(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   const handleNewArticleClick = () => {
     setPopupOpen(true);
@@ -44,7 +48,7 @@ export default function Create() {
 
   const handleCancelClick = () => {
     setPopupOpen(false);
-    setArticleContent('');
+    setArticleContent("");
   };
 
   const handleSaveAsDraftClick = async (event) => {
@@ -64,27 +68,27 @@ export default function Create() {
         votes: 0,
       }),
     })
-    .then((response) => {
-      if (response.status === 200) {
-        console.log("Article saved as draft");
-        return response.json();
-      } else {
-        console.log("Error saving article as draft");
-        throw new Error("Error saving article as draft");
-      }
-    })
-    .then((data) => {
-      console.log(data);
-      setPublishedArticles((prevState) => [...prevState, data]);
-      setPopupOpen(false);
-      setArticleContent('');
+      .then((response) => {
+        if (response.status === 200) {
+          console.log("Article saved as draft");
+          return response.json();
+        } else {
+          console.log("Error saving article as draft");
+          throw new Error("Error saving article as draft");
+        }
+      })
+      .then((data) => {
+        console.log(data);
+        setPublishedArticles((prevState) => [...prevState, data]);
+        setPopupOpen(false);
+        setArticleContent("");
 
-      // Reload the page to display the updated "Articles in Draft"
-      window.location.reload();
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+        // Reload the page to display the updated "Articles in Draft"
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const handlePublishClick = async (event) => {
@@ -103,27 +107,27 @@ export default function Create() {
         categories: categories,
       }),
     })
-    .then((response) => {
-      if (response.status === 200) {
-        console.log("Article saved");
-        return response.json();
-      } else {
-        console.log("Error saving article");
-        throw new Error("Error saving article");
-      }
-    })
-    .then((data) => {
-      console.log(data);
-      setPublishedArticles((prevState) => [...prevState, data]);
-      setPopupOpen(false);
-      setArticleContent('');
+      .then((response) => {
+        if (response.status === 200) {
+          console.log("Article saved");
+          return response.json();
+        } else {
+          console.log("Error saving article");
+          throw new Error("Error saving article");
+        }
+      })
+      .then((data) => {
+        console.log(data);
+        setPublishedArticles((prevState) => [...prevState, data]);
+        setPopupOpen(false);
+        setArticleContent("");
 
-      // Reload the page to display the updated "Published Articles"
-      window.location.reload();
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+        // Reload the page to display the updated "Published Articles"
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const addCategory = (e) => {
@@ -144,38 +148,43 @@ export default function Create() {
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">Create An Article!</h1>
 
-      <div className="center-content" style={{backgroundColor:"transparent"}}>
+      <div
+        className="center-content"
+        style={{ backgroundColor: "transparent" }}
+      >
         <div>
           <h2 className="text-lg font-semibold mb-2">Articles</h2>
-          
-            {/* Render published and draft articles here */}
-            {publishedArticles &&
-              publishedArticles.map((article) => (
-                <div className="bg-white rounded-lg shadow-md p-4 margin-sm">
-                  <div key={article.id}>
-                    <p className="text-gray-600 font-semibold">{article.author_id}</p>
-                    <h3 className="text-xl font-bold mb-2">{article.title}</h3>
-                    <p>{article.content}</p>
-                    <p>{article.votes}</p>
-                    {article.isDraft ? (
-                      <p className="text-blue-500 font-semibold">Draft</p>
-                    ) : (
-                      <p className="text-green-500 font-semibold">Published</p>
-                    )}
-                  </div>
+
+          {/* Render published and draft articles here */}
+          {publishedArticles &&
+            publishedArticles.map((article) => (
+              <div className="bg-white rounded-lg shadow-md p-4 margin-sm">
+                <div key={article.id}>
+                  <p className="text-gray-600 font-semibold">
+                    {article.author_id}
+                  </p>
+                  <h3 className="text-xl font-bold mb-2">{article.title}</h3>
+                  <p>{article.content}</p>
+                  <p>{article.votes}</p>
+                  {article.isDraft ? (
+                    <p className="text-blue-500 font-semibold">Draft</p>
+                  ) : (
+                    <p className="text-green-500 font-semibold">Published</p>
+                  )}
+                  <button class="btn btn-circle btn-outline">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                  </button>
                 </div>
-              ))}
-          
+              </div>
+            ))}
         </div>
         <button
-        className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-        onClick={handleNewArticleClick}
-      >
-        New Article
-      </button>
+          className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
+          onClick={handleNewArticleClick}
+        >
+          New Article
+        </button>
       </div>
-
-      
 
       {isPopupOpen && (
         <form className="mt-4 bg-white rounded-lg shadow-md p-4">

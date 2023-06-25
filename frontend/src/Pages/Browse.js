@@ -1,6 +1,6 @@
-import './Pages.css';
-import ArticleCard from '../Components/article-card';
-import { useEffect, useState } from 'react';
+import "./Pages.css";
+import ArticleCard from "../Components/article-card";
+import { useEffect, useState } from "react";
 
 export default function Browse() {
   const [articles, setArticles] = useState([]);
@@ -80,10 +80,15 @@ export default function Browse() {
       <div className="center-content">
         <div className="join">
           <div>
-            <input className="input input-bordered join-item" placeholder="Search..." />
+            <input
+              className="input input-bordered join-item"
+              placeholder="Search..."
+            />
           </div>
           <select className="select select-bordered join-item">
-            <option disabled selected>Sort By</option>
+            <option disabled selected>
+              Sort By
+            </option>
             <option>Recent</option>
             <option>Rating</option>
           </select>

@@ -1,7 +1,17 @@
-import { useState } from 'react';
-import './Components.css';
+import { useState } from "react";
+import "./Components.css";
 
-const ArticleCard = ({ id, title, author, date, body, votes, level, Downvote, Upvote }) => {
+const ArticleCard = ({
+  id,
+  title,
+  author,
+  date,
+  body,
+  votes,
+  level,
+  Downvote,
+  Upvote,
+}) => {
   const [upvoted, setUpvoted] = useState(false);
   const [downvoted, setDownvoted] = useState(false);
 
