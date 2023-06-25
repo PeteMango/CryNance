@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@worldcoin/idkit": "^0.5.1",
     "autoprefixer": "10.4.14",
     "next": "13.4.7",
     "next-auth": "^4.22.1",
