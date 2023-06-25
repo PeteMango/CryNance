@@ -1,0 +1,4 @@
+curl -X POST https://id.worldcoin.org/token \
+     -H "Authorization: Basic " \
+     -H "Content-Type: application/x-www-form-urlencoded" \
+     -d "code=23e5edda0f731dfdddace390&grant_type=authorization_code"
