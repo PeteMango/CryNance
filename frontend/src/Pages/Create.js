@@ -5,7 +5,7 @@ export default function Create() {
   const [articleContent, setArticleContent] = useState("");
   const [title, setTitle] = useState("");
   const level = useRef("");
-  const user = localStorage.getItem("username") || localStorage.getItem("user");
+  const user = localStorage.getItem("username") || localStorage.getItem("user") || "Anonymous";
   useEffect(() => {
     console.log("user", user);
   }, [user]);
@@ -144,6 +144,30 @@ export default function Create() {
     console.log(publishedArticles);
   }, [publishedArticles]);
 
+  const handleDelete = (id) => {
+    fetch("http://localhost:4000/api/article-delete", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: id,
+      })
+    })
+    .then((response) => {
+      if (response.status === 200) {
+        console.log("Article deleted");
+        return response.json();
+      } else {
+        console.log("Error deleting article");
+        throw new Error("Error deleting article");
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+  }
+
   return (
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">Create An Article!</h1>
@@ -171,7 +195,7 @@ export default function Create() {
                   ) : (
                     <p className="text-green-500 font-semibold">Published</p>
                   )}
-                  <button class="btn btn-circle btn-outline">
+                  <button class="btn btn-circle btn-outline" onClick={() => handleDelete(article.id)}>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
                   </button>
                 </div>

@@ -25,7 +25,7 @@ const db = new Polybase({
   defaultNamespace: "pk/0x6aec08b85c53bc7ac7256f4a479a352f5348048f3214d95592e0f9011f359649043af2b68cdd4bd96104d9d6e877b7336906fc8d547038b49a6d88bc3dbc56e1/CRyNANCE",
 });
 
-const articleCollectionReference = db.collection("Article");
+const articleCollectionReference = db.collection("Articles");
 const userCollectionReference = db.collection("User");
 
 async function createUser () {
@@ -327,7 +327,7 @@ app.post("/api/user-delete", async (req, res) => {
 app.post("/api/article-delete", async (req, res) => {
   const {id} = req.body;
   try {
-    const recordData = await userCollectionReference
+    const recordData = await articleCollectionReference
     .record(id).call("del");
     // .delete();
     console.log(recordData.data);
