@@ -43,7 +43,7 @@ const Navbar = () => {
           className="btn btn-ghost normal-case text-xl"
           onClick={handleLogoClick}
         >
-          CRyNance
+          CryNance
         </button>
       </div>
       <div className="navbar-center flex-auto space-x-2"></div>
