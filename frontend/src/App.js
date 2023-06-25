@@ -6,9 +6,11 @@ import Navbar from "./Components/Navbar";
 import Login from "./Pages/Login";
 import Browse from "./Pages/Browse";
 import Create from "./Pages/Create";
+import { Error } from "./Pages/Error";
 const code = new URLSearchParams(window.location.search).get("code");
 
 function App() {
+  const auth = localStorage.getItem("authentication") || "";
   return (
     <div className="App">
       <Router>
@@ -16,7 +18,11 @@ function App() {
         <Switch>
           <Route path="/" exact component={Login} />
           <Route path="/browse" component={Browse} />
-          <Route path="/create" component={Create} />
+          {/* <Route path="*" component={Error} /> */}
+          {/* <Route path="/create" component={Create} /> */}
+          {
+            auth === "orb" ? <Route path="/create" component={Create} /> : null
+          }
         </Switch>
       </Router>
     </div>
