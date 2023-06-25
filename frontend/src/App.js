@@ -9,6 +9,7 @@ import Login from "./Pages/Login";
 import Browse from "./Pages/Browse";
 import Create from "./Pages/Create";
 
+
 const code = new URLSearchParams(window.location.search).get("code");
 const client_id = "app_staging_0af5473e8e0e5c8eae581173d8a04603";
 const client_secret = process.env.client_secret;
@@ -35,7 +36,7 @@ function App() {
         console.log(code);
         console.log(res);
         console.log(res.id_token);
-        setAccesstoken(res.data.id_token);
+        setAccessToken(res.data.id_token);
       })
       .catch((err) => {
         console.log(err);
@@ -59,7 +60,6 @@ function App() {
           <Route path="/create" component={Create} />
         </Switch>
       </Router>
-      {/* {code ? (<DashBoard code = {code}></DashBoard>) : (<div></div>)} */}
     </div>
   );
 }
