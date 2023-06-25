@@ -98,7 +98,7 @@ export default function Browse() {
         </div>
         {articles &&
           articles
-            .sort((a, b) => b.vote - a.vote)
+            // .sort((a, b) => b.vote - a.vote)
             .map((article) => {
               return (
                 <ArticleCard
