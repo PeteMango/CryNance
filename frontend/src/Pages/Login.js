@@ -1,10 +1,10 @@
-import './Pages.css'
+import "./Pages.css";
 
 export default function Login() {
-    return (
-        <>
-        <div class="login-form-container"></div>
-        {/* <div class="login-form-container">
+  return (
+    <>
+      <div class="login-form-container"></div>
+      {/* <div class="login-form-container">
             <div class="card w-96 bg-base-100 shadow-xl">
                 <div class="form-control">
                 <label class="input-group input-group-vertical">
@@ -14,7 +14,7 @@ export default function Login() {
                 </div>
             </div>
         </div> */}
-        {/* <div class="login-container-full">
+      {/* <div class="login-container-full">
         <div class="flex w-full justify-center">
             <div id="login-card1" class="card w-96 bg-base-100 shadow-xl hover-enlarge">
             <figure><img src="/images/pink.png" alt="Shoes" /></figure>
@@ -37,6 +37,6 @@ export default function Login() {
             </div>
         </div>
         </div> */}
-        </>
-    )
+    </>
+  );
 }

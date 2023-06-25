@@ -1,7 +1,17 @@
-import { useState } from 'react';
-import './Components.css';
+import { useState } from "react";
+import "./Components.css";
 
-const ArticleCard = ({ id, title, author, date, body, votes, level, Downvote, Upvote }) => {
+const ArticleCard = ({
+  id,
+  title,
+  author,
+  date,
+  body,
+  votes,
+  level,
+  Downvote,
+  Upvote,
+}) => {
   const [upvoted, setUpvoted] = useState(false);
   const [downvoted, setDownvoted] = useState(false);
 
@@ -31,18 +41,22 @@ const ArticleCard = ({ id, title, author, date, body, votes, level, Downvote, Up
           </h3>
           <h4 className="cardBody">{body}</h4>
           <button
-            className={`cardButton ${upvoted ? 'upvoted' : ''}`}
+            className={`cardButton ${upvoted ? "upvoted" : ""}`}
             onClick={() => handleUpvote(id)}
             disabled={upvoted}
           >
-            <a target="_blank" rel="noopener noreferrer">Upvote</a>
+            <a target="_blank" rel="noopener noreferrer">
+              Upvote
+            </a>
           </button>
           <button
-            className={`cardButton ${downvoted ? 'downvoted' : ''}`}
+            className={`cardButton ${downvoted ? "downvoted" : ""}`}
             onClick={() => handleDownvote(id)}
             disabled={downvoted}
           >
-            <a target="_blank" rel="noopener noreferrer">Downvote</a>
+            <a target="_blank" rel="noopener noreferrer">
+              Downvote
+            </a>
           </button>
           <p className="voteCount">{votes} upvotes</p>
         </div>
