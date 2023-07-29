@@ -1,4 +1,4 @@
-# ethglobal-waterloo
+# CryNance
 
 ## Team Members:
 Thomas Wang, Sophia Sun, Jacob Zhou, Norman Chen and Peter Wang
